@@ -6,9 +6,6 @@ cursor = db.cursor()
 
 ratings = pd.read_csv('BX-Book-Ratings.csv', sep=";", encoding='ISO-8859-1')
 books = pd.read_csv('BX-Books.csv', sep=";", encoding='ISO-8859-1')
-for index, row in books.iterrows():
-    if type(row[3]) != int:
-        print(type(row[3]), row[3], index)
 
 '''
 for index, row in ratings.iterrows():
@@ -32,3 +29,21 @@ for index, row in ratings.iterrows():
 
 db.commit()
 '''
+
+for index, row in books.iterrows():
+    query = "INSERT INTO books VALUES('" + str(row['ISBN']) + "', '" + str(row['Book-Title']) + "', '" + \
+            str(row['Book-Author']) + "', " + str(row['Year-Of-Publication']) + ", '" + str(row['Publisher']) + \
+            "', '" + str(row['Image-URL-S']) + "', '" + str(row['Image-URL-M']) + "', '" + str(row['Image-URL-L']) + \
+            "');"
+    try:
+        cursor.execute(query)
+    except Exception as e:
+        print(e)
+        print(row)
+        print(index)
+        print(query)
+        input()
+    if index % 1000 == 0:
+        print(index)
+
+db.commit()
