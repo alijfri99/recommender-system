@@ -1,1 +1,7 @@
 database.sql
+calc_scores.cpython-38-x86_64-linux-gnu.so
+build
+calc_scores.c
+calc_scores.pyx
+main.py
+setup.py
