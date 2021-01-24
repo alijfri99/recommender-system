@@ -5,3 +5,6 @@ calc_scores.c
 calc_scores.pyx
 main.py
 setup.py
+.ipynb_checkpoints
+ir_assignment_table_books.csv
+ir_assignment_table_ratings.csv
